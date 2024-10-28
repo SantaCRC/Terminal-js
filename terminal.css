@@ -2,8 +2,8 @@
  * Fabian Alvarez © 2024 https://fabianalvarez.dev
  */
  body {
-    background: hsl(154, 50%, 5%);
-    color: hsl(154, 84%, 70%);
+    background: hsl(0, 0%, 0%);
+    color: hsl(120, 100%, 60%);
     text-shadow: 0 0 3px hsl(154, 84%, 70%);
     font-family: monospace;
     font-size: 16px;

@@ -4,21 +4,18 @@
  */
 const commands = {
     '': {
+        // Empty command only to show the noShow property, this command will not be shown in the help list
         description: 'Empty command',
         function: () => '\n',
         noShow: true,
     },
     'clear': {
         description: 'Clear the screen',
-        function: () => {
-            document.getElementById('asciiText').style.display = 'none';
-            document.getElementById('output').innerHTML = '';
-            return '';
-        }
+        function: () => clearScreen(),
     },
-    'test': {
-        description: 'Test command',
-        function: () => 'Test successful!'
+    'xkcd': {
+        description: 'Get the current XKCD comic',
+        function: () => xkcd()
     },
     'help': {
         description: 'List of commands',
@@ -26,7 +23,7 @@ const commands = {
     },
     'hello': {
         description: 'Hello World',
-        function: helloWorld
+        function: () => helloWorld()
     }
 };
 
@@ -47,4 +44,20 @@ function help() {
         }
     }
     return text;
+}
+
+// Function to clear the screen
+function clearScreen() {
+    document.getElementById('asciiText').style.display = 'none';
+    document.getElementById('output').innerHTML = '';
+    return '';
+}
+
+// get current xkcd comic
+function xkcd() {
+    return fetch('https://xkcd.com/info.0.json')
+        .then(response => response.json())
+        .then(data => {
+            return `<img src="${data.img}" alt="${data.alt}" title="${data.title}">`;
+        });
 }
