@@ -1,0 +1,24 @@
+{
+  "name": "terminaljs",
+  "version": "1.0.0",
+  "description": "Simple retro-style javascript simple console",
+  "main": "terminal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SantaCRC/Terminal-js.git"
+  },
+  "keywords": [
+    "terminal",
+    "retro",
+    "emulator"
+  ],
+  "author": "Fabian Alvarez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SantaCRC/Terminal-js/issues"
+  },
+  "homepage": "https://github.com/SantaCRC/Terminal-js#readme"
+}

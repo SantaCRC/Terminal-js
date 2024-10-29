@@ -2,7 +2,7 @@
  * Fabian Alvarez © 2024 https://fabianalvarez.dev
  * Dictionary of commands, their descriptions, and associated functions
  */
-const commands = {
+let commands = {
     '': {
         // Placeholder command to demonstrate the `noShow` property. This command will be hidden in the help list.
         description: 'Empty command',
@@ -80,7 +80,8 @@ function getAPOD() {
             } else {
                 content = `<p>Today's content is not available in image or video format.</p>`;
             }
-            document.getElementById('output').innerHTML = content;
+            content = 'Retrieved Astronomy Picture of the Day:\n' + content;
+            document.getElementById('output').innerHTML = document.getElementById('output').innerHTML+content;
             return content;
         })
         .catch(error => {
@@ -90,3 +91,5 @@ function getAPOD() {
             return errorMessage;
         });
 }
+
+

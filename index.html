@@ -4,6 +4,17 @@
         <link rel="stylesheet" type="text/css" href="terminal.css">
         <script src="functions.js"></script>
         <script src="terminal.js"></script>
+        <!-- Block of code to show how to extends functions -->
+        <script> 
+          commands['hola'] = {
+            description: 'Muestra "Hola Mundo"',
+            function: helloWorld,
+        };
+
+        function helloWorld() {
+            return 'Hola Mundo';
+        }
+        </script>
     </header>
 <body>
   <pre id="asciiText">

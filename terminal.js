@@ -31,14 +31,27 @@ function handleKeypress(e, input, output) {
   }
 }
 
-// Execute a command based on user input and return the corresponding output
-function execute(command) {
-  command = command.toLowerCase();
-  if (commands[command]) {
-    return commands[command].function();
-  }
-  return "Command not found. Enter 'help' for a list of commands.";
+// Función para ejecutar el comando con o sin argumentos
+function execute(commandInput) {
+    const [command, ...args] = commandInput.toLowerCase().split(" ");
+    
+    if (commands[command]) {
+        const { function: commandFunction, hasArgs } = commands[command];
+        
+        if (hasArgs) {
+            if (args.length > 0) {
+                return commandFunction(...args); // Ejecuta con argumentos
+            } else {
+                return "This command requires arguments.";
+            }
+        } else {
+            return commandFunction(); // Ejecuta sin argumentos
+        }
+    }
+    
+    return "Command not found. Enter 'help' for a list of commands.";
 }
+
 
 // Initialize the page and display ASCII art and instructions with delay
 document.addEventListener('DOMContentLoaded', async () => {

@@ -1,14 +1,17 @@
 /**
  * Fabian Alvarez © 2024 https://fabianalvarez.dev
+ * Responsive Terminal CSS
  */
+
  body {
     background: hsl(0, 0%, 0%);
     color: hsl(120, 100%, 60%);
     text-shadow: 0 0 3px hsl(154, 84%, 70%);
     font-family: monospace;
-    font-size: 16px;
-    max-width: 550px;
+    font-size: 1rem; /* Relative font size for responsiveness */
+    max-width: 90vw; /* Limits width for smaller screens */
     margin: auto;
+    padding: 0 1rem; /* Adds padding for small screens */
 }
 
 pre {
@@ -23,7 +26,7 @@ pre {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: -1; /* ensure the effect doesn't cover the text */
+    z-index: -1; /* Ensure the effect doesn't cover the text */
     background: radial-gradient(hsl(154, 5%, 15%) 0%, hsl(154, 50%, 5%) 70%);
 }
 
@@ -57,9 +60,9 @@ pre {
 }
 
 .apod-container {
-    max-width: 600px;
+    max-width: 90vw; /* Adjusts for small screens */
     margin: auto;
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
     border: 1px solid hsl(154, 84%, 40%);
     background: hsl(154, 50%, 10%);
@@ -69,18 +72,18 @@ pre {
 
 .apod-container h1 {
     font-size: 1.5em;
-    margin-bottom: 10px;
+    margin-bottom: 0.1em;
     color: hsl(154, 84%, 70%);
     text-shadow: 0 0 5px hsl(154, 84%, 70%);
 }
 
 .apod-container img, .apod-container iframe {
     max-width: 100%;
-    display: flex;
+    height: auto; /* Maintains proportions */
     border-radius: 5px;
-    margin-bottom: 10px;
-    align-content: center;
-    max-height: 400px;
+    margin: 0.5em auto; /* Centers the image */
+    display: block; /* Centers image as a block element */
+    max-height: 100vh; /* Limits height for small screens */
 }
 
 .apod-container p {
@@ -88,7 +91,43 @@ pre {
     line-height: 1.6;
     color: hsl(154, 84%, 70%);
     text-shadow: 0 0 3px hsl(154, 84%, 70%);
-    white-space: pre-wrap; /* Permite que el texto respete los saltos de línea */
-    word-wrap: break-word; /* Evita el desbordamiento de palabras largas */
+    white-space: pre-wrap; /* Preserves line breaks */
+    word-wrap: break-word; /* Prevents overflow of long words */
     overflow-wrap: break-word;
+}
+
+/* Media Query for small screens */
+@media (max-width: 600px) {
+    body {
+        font-size: 0.9rem; /* Reduces font size on small screens */
+    }
+
+    .apod-container h1 {
+        font-size: 1.2em; /* Reduces header size */
+    }
+
+    .apod-container {
+        padding: 0.75rem;
+    }
+
+    .apod-container img {
+        max-height: 40vh; /* Reduces image height */
+    }
+}
+
+/* Media Query for large screens */
+@media (min-width: 1200px) {
+    body {
+        font-size: 1.1rem; /* Increases font size on large screens */
+        max-width: 100%; /* Expands max width */
+    }
+
+    .apod-container {
+        max-width: 100%;
+        padding: 1.5rem;
+    }
+
+    .apod-container h1 {
+        font-size: 1.75em;
+    }
 }
