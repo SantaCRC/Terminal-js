@@ -74,25 +74,52 @@ function execute(commandInput) {
 // Initialize the page and display ASCII art and instructions with delay
 document.addEventListener('DOMContentLoaded', async () => {
   const asciiText = document.getElementById('asciiText');
-  const asciiArt = asciiText.innerText; // Store the ASCII art text
-  asciiText.innerHTML = ''; // Clear the initial content
+  const asciiArt = asciiText.innerText;
+  asciiText.innerHTML = '';
 
   const instructions = document.getElementById('instructions');
   const prompt = document.getElementById('prompt');
   const cursor = document.getElementById('cursor');
+  const input = document.getElementById('command-input');
+  const output = document.getElementById('output');
+  const hiddenInput = document.getElementById('hidden-input'); // Input oculto
 
   await copyright();
-  await wait(1000); // Initial delay before displaying ASCII art
-  await writeText(asciiText, asciiArt); // Display ASCII art with typewriter effect
-  await wait(500); // Delay before displaying instructions
+  await wait(1000);
+  await writeText(asciiText, asciiArt);
+  await wait(500);
   await writeText(instructions, "Enter a command. Enter 'help' to see a list of commands.");
 
-  // Set up the command prompt appearance
   prompt.prepend('>');
   cursor.innerHTML = '_';
 
-  // Set up event listener for capturing user input
-  const input = document.getElementById('command-input');
-  const output = document.getElementById('output');
-  document.addEventListener('keydown', (e) => handleKeypress(e, input, output));
+  // Detectar si es móvil
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  if (isMobile) {
+      // Enfocar `hiddenInput` al tocar el área de `#prompt`
+      prompt.addEventListener('click', () => {
+          hiddenInput.focus();
+      });
+
+      // Actualizar `command-input` con el valor de `hiddenInput`
+      hiddenInput.addEventListener('input', () => {
+          input.textContent = hiddenInput.value;
+      });
+
+      // Manejar `Enter` en móviles
+      hiddenInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+              const command = hiddenInput.value.trim();
+              hiddenInput.value = ''; // Limpiar `hiddenInput`
+              input.textContent = ''; // Limpiar `command-input`
+              const result = execute(command); // Ejecutar el comando
+              output.innerHTML += `<br><strong>${command}</strong><br>`;
+              writeText(output, result); // Mostrar el resultado
+          }
+      });
+  } else {
+      // Configuración de escritorio: Escuchar eventos de teclado en toda la página
+      document.addEventListener('keydown', (e) => handleKeypress(e, input, output));
+  }
 });
