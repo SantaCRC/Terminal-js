@@ -4,6 +4,22 @@
  */
 const wait = (ms = 0) => new Promise(resolve => setTimeout(resolve, ms));
 
+// Fucntion to display copyright
+async function copyright(delay = 5) {
+  const content = "Loading terminaljs by <a href='https://fabianalvarez.dev' target='_blank'>SantaCRC</a>.......\n";
+  const outputElement = document.getElementById("asciiText");
+  
+  // Añadir el texto de manera progresiva
+  for (let i = 0; i < content.length; i++) {
+    outputElement.textContent += content[i]; // Usamos textContent para evitar interpretación de HTML mientras se escribe
+    window.scrollTo(0, document.body.scrollHeight); // Desplaza al final conforme se añade texto
+    await wait(delay); // Espera el tiempo especificado antes de añadir el siguiente carácter
+  }
+  
+  // Convertir el texto en HTML una vez terminado
+  outputElement.innerHTML = content;
+}
+
 // Function to write text to a target element with a specified delay between each character
 async function writeText(target, content, delay = 5) {
   for (let i = 0; i < content.length; i++) {
@@ -65,6 +81,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const prompt = document.getElementById('prompt');
   const cursor = document.getElementById('cursor');
 
+  await copyright();
   await wait(1000); // Initial delay before displaying ASCII art
   await writeText(asciiText, asciiArt); // Display ASCII art with typewriter effect
   await wait(500); // Delay before displaying instructions

@@ -14,6 +14,7 @@
     padding: 0 1rem; /* Adds padding for small screens */
 }
 
+
 pre {
     margin: 0 auto;
     display: table;
@@ -130,4 +131,9 @@ pre {
     .apod-container h1 {
         font-size: 1.75em;
     }
+}
+
+a {
+    color: hsl(120, 100%, 60%);
+    animation: blink 1s linear infinite;
 }

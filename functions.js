@@ -30,6 +30,10 @@ let commands = {
         function: echo,
         hasArgs: true,
     },
+    'date': {
+        description: 'Display the current date',
+        function: () => new Date().toLocaleDateString(),
+    },
 };
 
 // Returns the text "Hello World"
