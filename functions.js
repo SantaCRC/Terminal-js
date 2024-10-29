@@ -82,6 +82,7 @@ function getAPOD() {
             }
             content = 'Retrieved Astronomy Picture of the Day:\n' + content;
             document.getElementById('output').innerHTML = document.getElementById('output').innerHTML+content;
+            window.scrollTo(0, document.body.scrollHeight);
             return content;
         })
         .catch(error => {

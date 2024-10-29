@@ -1,5 +1,5 @@
 {
-  "name": "terminaljs",
+  "name": "@santacrc/terminaljs",
   "version": "1.0.0",
   "description": "Simple retro-style javascript simple console",
   "main": "terminal.js",
