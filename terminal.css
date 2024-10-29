@@ -55,3 +55,40 @@ pre {
 .blink {
     animation: blink 0.4s linear infinite;
 }
+
+.apod-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid hsl(154, 84%, 40%);
+    background: hsl(154, 50%, 10%);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.apod-container h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: hsl(154, 84%, 70%);
+    text-shadow: 0 0 5px hsl(154, 84%, 70%);
+}
+
+.apod-container img, .apod-container iframe {
+    max-width: 100%;
+    display: flex;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    align-content: center;
+    max-height: 400px;
+}
+
+.apod-container p {
+    text-align: justify;
+    line-height: 1.6;
+    color: hsl(154, 84%, 70%);
+    text-shadow: 0 0 3px hsl(154, 84%, 70%);
+    white-space: pre-wrap; /* Permite que el texto respete los saltos de línea */
+    word-wrap: break-word; /* Evita el desbordamiento de palabras largas */
+    overflow-wrap: break-word;
+}
