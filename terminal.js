@@ -21,10 +21,12 @@ async function copyright(delay = 5) {
 }
 
 // Function to write text to a target element with a specified delay between each character
-async function writeText(target, content, delay = 5) {
+async function writeText(target, content, delay = 5, is_mobile = false) {
   for (let i = 0; i < content.length; i++) {
     target.innerHTML += content[i]; // Add one character at a time
+    if (!is_mobile){
     window.scrollTo(0, document.body.scrollHeight); // Scroll to the bottom as text is added
+    }
     await wait(delay); // Wait the specified delay before adding the next character
   }
 }
