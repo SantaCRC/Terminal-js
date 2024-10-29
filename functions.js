@@ -24,7 +24,12 @@ let commands = {
     'apod': {
         description: 'Fetch the Astronomy Picture of the Day',
         function: getAPOD,
-    }
+    },
+    'echo': {
+        description: 'Repeat the input text',
+        function: echo,
+        hasArgs: true,
+    },
 };
 
 // Returns the text "Hello World"
@@ -94,3 +99,7 @@ function getAPOD() {
 }
 
 
+
+function echo(...args) {
+    return args.join(' ');
+}

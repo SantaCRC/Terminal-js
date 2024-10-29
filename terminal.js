@@ -25,15 +25,17 @@ function handleKeypress(e, input, output) {
       writeText(output, execute(command)); // Write the result of the command execution with a delay
     } else if (e.key === 'Backspace') {
       input.innerHTML = input.innerHTML.slice(0, -1); // Remove the last character on Backspace
-    } else {
+    } else if (e.key.length === 1) { // Only add characters with a length of 1 (to ignore Shift, Ctrl, etc.)
       input.insertAdjacentText('beforeend', e.key); // Add typed character to the input
     }
   }
 }
 
+
 // Función para ejecutar el comando con o sin argumentos
 function execute(commandInput) {
-    const [command, ...args] = commandInput.toLowerCase().split(" ");
+    let [command, ...args] = commandInput.split(" ");
+    command = command.toLowerCase(); 
     
     if (commands[command]) {
         const { function: commandFunction, hasArgs } = commands[command];
