@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               input.textContent = ''; // Limpiar `command-input`
               const result = execute(command); // Ejecutar el comando
               output.innerHTML += `<br><strong>${command}</strong><br>`;
-              writeText(output, result); // Mostrar el resultado
+              writeText(output, result, true); // Mostrar el resultado
           }
       });
   } else {
