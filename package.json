@@ -1,6 +1,6 @@
 {
   "name": "@santacrc/terminaljs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple retro-style javascript simple console",
   "main": "terminal.js",
   "scripts": {
