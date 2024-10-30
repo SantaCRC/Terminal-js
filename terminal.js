@@ -26,6 +26,8 @@ async function writeText(target, content, delay = 5, is_mobile = false) {
     target.innerHTML += content[i]; // Add one character at a time
     if (!is_mobile){
     window.scrollTo(0, document.body.scrollHeight); // Scroll to the bottom as text is added
+    } else {
+        target.scrollIntoView();
     }
     await wait(delay); // Wait the specified delay before adding the next character
   }
